@@ -219,7 +219,7 @@ with main:
             meta = {"gene":gene,"cancer":cancer,"plot_type":"survival",
                     "survival_type":surv_type,"cutoff":cutoff,
                     "n_tumor":n*2,"pvalue":pval,"hr":hr,"dataset":"TCGA (demo)"}
-            fig = render_figure_editor(fig, key_prefix="km", meta=meta)
+            fig = render_figure_editor(fig, key_prefix="km", meta=None)
 
             csv = pd.DataFrame({"time_high":th,"surv_high":sh}).to_csv(index=False)
             st.download_button("Download curve data as CSV", csv,
@@ -275,7 +275,7 @@ with main:
                 "p_value":pvals.round(3)})
             meta = {"gene":gene,"cancer":"Pan-cancer","plot_type":"forest",
                     "survival_type":surv_type,"dataset":"TCGA (demo)"}
-            fig = render_figure_editor(fig, key_prefix="forest", meta=meta)
+            fig = render_figure_editor(fig, key_prefix="forest", meta=None)
             st.download_button("Download forest plot data as CSV",
                                fdf.to_csv(index=False),
                                f"{gene}_pancancer_HR.csv","text/csv")
@@ -325,7 +325,7 @@ with main:
             </small>""", unsafe_allow_html=True)
             meta = {"gene":gene,"cancer":cancer,"plot_type":"competing_risks",
                     "dataset":"TCGA (demo)"}
-            fig = render_figure_editor(fig, key_prefix="comprisks", meta=meta)
+            fig = render_figure_editor(fig, key_prefix="comprisks", meta=None)
 
         # ── LANDMARK ANALYSIS ─────────────────────────────────────────────────
         elif plot_type == "Landmark analysis":
@@ -358,7 +358,7 @@ with main:
             st.plotly_chart(fig, use_container_width=True)
             meta = {"gene":gene,"cancer":cancer,"plot_type":"landmark",
                     "dataset":"TCGA (demo)"}
-            fig = render_figure_editor(fig, key_prefix="landmark", meta=meta)
+            fig = render_figure_editor(fig, key_prefix="landmark", meta=None)
 
         # ── MULTI-GENE COMPARISON ─────────────────────────────────────────────
         elif plot_type == "Multi-gene comparison":
@@ -388,6 +388,6 @@ with main:
             st.plotly_chart(fig, use_container_width=True)
             meta = {"gene":", ".join(genes_list),"cancer":cancer,
                     "plot_type":"multi_gene_survival","dataset":"TCGA (demo)"}
-            fig = render_figure_editor(fig, key_prefix="multigene", meta=meta)
+            fig = render_figure_editor(fig, key_prefix="multigene", meta=None)
 
 render_footer()
