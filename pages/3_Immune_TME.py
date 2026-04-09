@@ -185,7 +185,7 @@ with main:
             st.plotly_chart(fig_umap, use_container_width=True)
             meta = {"gene":gene_overlay or "TME","cancer":cancer,
                     "plot_type":"UMAP","dataset":", ".join(ds_list)}
-            fig_umap = render_figure_editor(fig_umap, key_prefix="umap", meta=meta)
+            fig_umap = render_figure_editor(fig_umap, key_prefix="umap", meta=None)
 
         with tab2:
             samples = [f"S{i+1:02d}" for i in range(12)]
@@ -207,7 +207,7 @@ with main:
             st.plotly_chart(fig_frac, use_container_width=True)
             meta2 = {"gene":"Cell fractions","cancer":cancer,
                      "plot_type":"bar","dataset":", ".join(ds_list)}
-            fig_frac = render_figure_editor(fig_frac, key_prefix="fractions", meta=meta2)
+            fig_frac = render_figure_editor(fig_frac, key_prefix="fractions", meta=None)
             frac_df = pd.DataFrame(raw,index=samples)
             st.download_button("Download cell fraction data as CSV",
                                frac_df.to_csv(),
@@ -246,7 +246,7 @@ with main:
             c2.metric("Hazard ratio",f"{hr:.2f}")
             meta3 = {"gene":sel_cell,"cancer":cancer,"plot_type":"survival",
                      "pvalue":pval,"hr":hr,"dataset":", ".join(ds_list)}
-            fig_km = render_figure_editor(fig_km, key_prefix="tme_km", meta=meta3)
+            fig_km = render_figure_editor(fig_km, key_prefix="tme_km", meta=None)
 
         with tab4:
             marker_rows=[]
