@@ -170,7 +170,7 @@ with main:
             </div>""", unsafe_allow_html=True)
             meta_g = {"gene":panel,"cancer":cancer,"plot_type":"gauge",
                       "dataset":"TCGA + ICI cohorts (demo)"}
-            fig_gauge = render_figure_editor(fig_gauge, key_prefix="gauge", meta=meta_g)
+            fig_gauge = render_figure_editor(fig_gauge, key_prefix="gauge", meta=None)
 
         # ── TAB 2: Feature importance (bar chart) ─────────────────────────────
         with tab2:
@@ -199,7 +199,7 @@ with main:
                         unsafe_allow_html=True)
             meta_fi = {"gene":panel,"cancer":cancer,"plot_type":"feature_importance",
                        "dataset":"TCGA + ICI cohorts (demo)"}
-            fig_fi = render_figure_editor(fig_fi, key_prefix="feat_imp", meta=meta_fi)
+            fig_fi = render_figure_editor(fig_fi, key_prefix="feat_imp", meta=None)
             fi_df = pd.DataFrame({"Gene":g_sorted,"Importance":i_sorted})
             st.download_button("Download feature importance as CSV",
                                fi_df.to_csv(index=False),
@@ -266,7 +266,7 @@ with main:
 
             meta_roc = {"gene":panel,"cancer":cancer,"plot_type":"ROC",
                         "dataset":"TCGA + ICI cohorts (demo)"}
-            fig_roc = render_figure_editor(fig_roc, key_prefix="roc", meta=meta_roc)
+            fig_roc = render_figure_editor(fig_roc, key_prefix="roc", meta=None)
 
         # ── TAB 4: SHAP-style analysis ────────────────────────────────────────
         with tab4:
@@ -324,7 +324,7 @@ with main:
 
             meta_shap = {"gene":panel,"cancer":cancer,"plot_type":"SHAP",
                          "dataset":"TCGA + ICI cohorts (demo)"}
-            fig_shap = render_figure_editor(fig_shap, key_prefix="shap", meta=meta_shap)
+            fig_shap = render_figure_editor(fig_shap, key_prefix="shap", meta=None)
 
         # ── TAB 5: Patient stratification ─────────────────────────────────────
         with tab5:
@@ -358,7 +358,7 @@ with main:
             meta_strat = {"gene":panel,"cancer":cancer,"plot_type":"stratification",
                           "dataset":"TCGA + ICI cohorts (demo)"}
             fig_strat = render_figure_editor(fig_strat, key_prefix="stratification",
-                                             meta=meta_strat)
+                                             meta=None)
             strat_df = pd.DataFrame({
                 "Patient":[f"P{i+1:03d}" for i in range(n_s)],
                 "Score (%)":scores_s.round(1),"Classification":labels_s})
